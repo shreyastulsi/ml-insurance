@@ -2,9 +2,10 @@
 
 Minimal steps to run the full pipeline from scratch.
 
-## Clone Repo
+## Clone Repo and CD
 ```bash
 git clone https://github.com/shreyastulsi/insurance-ml-c111.git
+cd insurance-ml-c111
 ```
 ## Setup
 ```bash
