@@ -1,6 +1,7 @@
 from pathlib import Path
 import json
 import sys
+import warnings
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
@@ -10,6 +11,8 @@ from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
 from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error, mean_absolute_percentage_error
 import matplotlib.pyplot as plt
 import seaborn as sns
+
+warnings.filterwarnings('ignore', category=UserWarning, module='sklearn.neural_network')
 
 try:
     from sklearn.neural_network import MLPRegressor
@@ -134,14 +137,19 @@ def train_models(X_train, y_train):
     
     if NEURAL_NET_AVAILABLE:
         models["Neural Network (MLP)"] = MLPRegressor(
-            hidden_layer_sizes=(100, 50), max_iter=500, random_state=42,
-            early_stopping=True, validation_fraction=0.1
+            hidden_layer_sizes=(100, 50), max_iter=1000, random_state=42,
+            early_stopping=True, validation_fraction=0.1, tol=1e-4, n_iter_no_change=20
         )
     
     for name, model in models.items():
         print(f"\nTraining {name}...")
-        model.fit(X_train, y_train)
-        print(f"✓ {name} trained successfully")
+        try:
+            model.fit(X_train, y_train)
+            print(f"✓ {name} trained successfully")
+        except Exception as e:
+            print(f"✗ {name} failed to train: {e}")
+            if name == "Neural Network (MLP)":
+                models.pop(name)
     
     return models
 

@@ -1,0 +1,90 @@
+================================================================================
+INSURANCE CHARGES PREDICTION - COMPREHENSIVE ML ANALYSIS REPORT
+================================================================================
+
+DATASET OVERVIEW
+--------------------------------------------------------------------------------
+Total samples: 1338
+Features: age, sex, bmi, children, smoker, region
+Target variable: charges
+Average charges: $13,270.42
+Standard deviation: $12,110.01
+Min charges: $1,121.87
+Max charges: $63,770.43
+
+KEY INSIGHTS FROM EXPLORATORY DATA ANALYSIS
+--------------------------------------------------------------------------------
+Feature correlations with charges:
+  age: 0.2990
+  bmi: 0.1983
+  children: 0.0680
+
+Smoker impact:
+  Average charges for smokers: $32,050.23
+  Average charges for non-smokers: $8,434.27
+  Difference: $23,615.96 (280.0% higher)
+
+MODELS EVALUATED
+--------------------------------------------------------------------------------
+  • Linear Regression
+  • Random Forest
+  • Gradient Boosting
+  • Neural Network (MLP)
+
+MODEL PERFORMANCE COMPARISON
+--------------------------------------------------------------------------------
+
+Random Forest:
+  R² Score:  0.8645
+  MAE:       $2,517.11
+  RMSE:      $4,586.63
+  MAPE:      30.11%
+
+Gradient Boosting:
+  R² Score:  0.8612
+  MAE:       $2,485.65
+  RMSE:      $4,642.81
+  MAPE:      29.50%
+
+Neural Network (MLP):
+  R² Score:  0.8501
+  MAE:       $2,986.01
+  RMSE:      $4,824.19
+  MAPE:      34.09%
+
+Linear Regression:
+  R² Score:  0.7833
+  MAE:       $4,186.51
+  RMSE:      $5,799.59
+  MAPE:      47.09%
+
+BEST MODEL
+--------------------------------------------------------------------------------
+Model: Random Forest
+R² Score: 0.8645
+Mean Absolute Error: $2,517.11
+Root Mean Squared Error: $4,586.63
+Mean Absolute Percentage Error: 30.11%
+
+Feature Importance (Best Model):
+  smoker: 0.6168
+  bmi: 0.2124
+  age: 0.1334
+  children: 0.0187
+  region: 0.0127
+  sex: 0.0059
+
+1. MODEL PERFORMANCE:
+   The Random Forest model achieved the best performance with an R² score of 0.8645.
+
+2. PREDICTION ACCURACY:
+   On average, predictions deviate by $2,517.11 from actual charges.
+   The mean absolute percentage error of 30.11% indicates reasonable prediction accuracy.
+
+3. KEY FACTORS INFLUENCING CHARGES:
+   Based on feature importance analysis, the top factors are:
+   1. smoker (importance: 0.6168)
+   2. bmi (importance: 0.2124)
+   3. age (importance: 0.1334)
+
+END OF REPORT
